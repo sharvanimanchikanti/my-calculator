@@ -66,7 +66,9 @@ class TestMultiplyDivide:
         """Test dividing negative numbers"""
         assert divide(-6, -3) == 2
         assert divide(-10, -2) == 5
-    
     def test_divide_by_zero(self):
         """Test division by zero raises ValueError."""
-        assert divide(10, 0) == "Cannot divide 10 by zero - division by zero is undefined"
+        with pytest.raises(ValueError, match="Cannot divide -10 by zero - division by zero is undefined"):
+            divide(-10, 0)
+        with pytest.raises(ValueError, match="Cannot divide 10 by zero - division by zero is undefined"):
+            divide(10, 0)
