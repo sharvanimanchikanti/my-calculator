@@ -72,3 +72,21 @@ class TestMultiplyDivide:
             divide(-10, 0)
         with pytest.raises(ValueError, match="Cannot divide 10 by zero - division by zero is undefined"):
             divide(10, 0)
+        
+class TestPowerSqrt:
+    """Test power and square root operations"""
+    
+    def test_power(self):
+        """Test exponentiation"""
+        from src.calculator import power
+        assert power(2, 3) == 8
+        assert power(5, 0) == 1
+        assert power(4, 0.5) == 2
+    
+    def test_sqrt(self):
+        """Test square root"""
+        from src.calculator import sqrt
+        assert sqrt(9) == 3
+        assert sqrt(16) == 4
+        with pytest.raises(ValueError, match="Cannot compute square root of negative number"):
+            sqrt(-4)
